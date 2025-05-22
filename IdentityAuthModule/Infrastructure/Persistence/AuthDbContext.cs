@@ -1,15 +1,10 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace IdentityAuthModule.Persistence
+namespace IdentityAuthModule.Infrastructure.Persistence
 {
-    public class AuthDbContext : IdentityDbContext
+    public class AuthDbContext(DbContextOptions<AuthDbContext> options) : IdentityDbContext(options)
     {
-        public AuthDbContext(DbContextOptions<AuthDbContext> options)
-            : base(options)
-        {
-        }
-
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);

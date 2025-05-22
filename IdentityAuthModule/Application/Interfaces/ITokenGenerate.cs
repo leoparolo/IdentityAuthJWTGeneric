@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using System.Security.Claims;
 
-namespace IdentityAuthModule.TokenGenerate
+namespace IdentityAuthModule.Application.Interfaces
 {
     public interface ITokenGenerate
     {

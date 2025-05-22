@@ -1,7 +1,7 @@
-﻿using IdentityAuthModule.DTO;
+﻿using IdentityAuthModule.Application.DTO.Requests;
 using Microsoft.AspNetCore.Identity;
 
-namespace IdentityAuthModule.CredentialValidator
+namespace IdentityAuthModule.Application.Interfaces
 {
     public interface ICredentialValidator
     {

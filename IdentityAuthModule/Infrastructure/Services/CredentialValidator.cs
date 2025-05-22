@@ -1,16 +1,12 @@
-﻿using IdentityAuthModule.DTO;
+﻿using IdentityAuthModule.Application.DTO.Requests;
+using IdentityAuthModule.Application.Interfaces;
 using Microsoft.AspNetCore.Identity;
 
-namespace IdentityAuthModule.CredentialValidator
+namespace IdentityAuthModule.Infrastructure.Services
 {
-    public class CredentialValidator : ICredentialValidator
+    public class CredentialValidator(UserManager<IdentityUser> userManager) : ICredentialValidator
     {
-        private readonly UserManager<IdentityUser> _userManager;
-
-        public CredentialValidator(UserManager<IdentityUser> userManager)
-        {
-            _userManager = userManager;
-        }
+        private readonly UserManager<IdentityUser> _userManager = userManager;
 
         public async Task<IdentityUser> ValidateAsync(LoginRequest _loginRequest)
         {

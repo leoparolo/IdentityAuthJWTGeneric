@@ -1,4 +1,4 @@
-﻿namespace IdentityAuthModule.DTO
+﻿namespace IdentityAuthModule.Application.DTO.Requests
 {
     public class LoginRequest
     {

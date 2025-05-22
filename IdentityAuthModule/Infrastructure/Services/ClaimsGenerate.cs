@@ -1,16 +1,12 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using IdentityAuthModule.Application.Interfaces;
+using Microsoft.AspNetCore.Identity;
 using System.Security.Claims;
 
-namespace IdentityAuthModule.ClaimsGenerate
+namespace IdentityAuthModule.Infrastructure.Services
 {
-    public class ClaimsGenerate : IClaimsGenerate
+    public class ClaimsGenerate(UserManager<IdentityUser> userManager) : IClaimsGenerate
     {
-        private readonly UserManager<IdentityUser> _userManager;
-
-        public ClaimsGenerate(UserManager<IdentityUser> userManager)
-        {
-            _userManager = userManager;
-        }
+        private readonly UserManager<IdentityUser> _userManager = userManager;
 
         public async Task<List<Claim>> CreateClaimsAsync(IdentityUser user)
         {
@@ -21,7 +17,7 @@ namespace IdentityAuthModule.ClaimsGenerate
             {
                 userClaims.Add(new Claim(ClaimTypes.Role, role));
             }
-            return userClaims.ToList();
+            return userClaims.ToList()!;
         }
     }
 }

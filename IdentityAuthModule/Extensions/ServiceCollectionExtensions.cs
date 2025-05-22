@@ -1,5 +1,6 @@
-﻿using IdentityAuthModule.Persistence;
-using IdentityAuthModule.Services;
+﻿using IdentityAuthModule.Application.Interfaces;
+using IdentityAuthModule.Application.UseCases.Auth.Commands;
+using IdentityAuthModule.Infrastructure.Persistence;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
@@ -19,8 +20,7 @@ namespace IdentityAuthModule.Extensions
             services.ConfigureIdentityOptions();
             services.AddIdentityCoreServices();
             services.ConfigureJwtBearer(config);
-
-            services.AddScoped<IAuthService, AuthService>();
+            services.AddScoped<ILoginUserService, LoginUserService>();
             services.AddAuthorization();
 
             return services;
